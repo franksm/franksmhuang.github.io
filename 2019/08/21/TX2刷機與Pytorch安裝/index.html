@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>TX2刷機與Pytorch安裝 | 仕孟的Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="編輯 : Frnak日期 : 2019/08/21">
+<meta name="keywords" content="TX2,Edge Computing,PyTorch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TX2刷機與Pytorch安裝">
+<meta property="og:url" content="http://franksm.github.io/2019/08/21/TX2刷機與Pytorch安裝/index.html">
+<meta property="og:site_name" content="仕孟的Blog">
+<meta property="og:description" content="編輯 : Frnak日期 : 2019/08/21">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:image" content="https://i.imgur.com/EGqDGZh.jpg">
+<meta property="og:image" content="https://i.imgur.com/1EXxJod.jpg">
+<meta property="og:image" content="https://i.imgur.com/zIUdGRK.png">
+<meta property="og:image" content="https://i.imgur.com/XpeBinA.png">
+<meta property="og:updated_time" content="2019-08-31T20:59:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TX2刷機與Pytorch安裝">
+<meta name="twitter:description" content="編輯 : Frnak日期 : 2019/08/21">
+<meta name="twitter:image" content="https://i.imgur.com/EGqDGZh.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="仕孟的Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">仕孟的Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">日常筆記</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜尋"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://franksm.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-TX2刷機與Pytorch安裝" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/21/TX2刷機與Pytorch安裝/" class="article-date">
+  <time datetime="2019-08-21T10:23:19.000Z" itemprop="datePublished">2019-08-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      TX2刷機與Pytorch安裝
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>編輯 : Frnak<br>日期 : 2019/08/21</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+
+<h3 id="風扇調整"><a href="#風扇調整" class="headerlink" title="風扇調整"></a>風扇調整</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo nvpmodel -m 0         # 切换工作模式到最大</span><br><span class="line">sudo  ~/jetson_clocks.sh   # 强制开启风扇最大转速</span><br></pre></td></tr></table></figure>
+
+<h3 id="刷機"><a href="#刷機" class="headerlink" title="刷機"></a>刷機</h3><p><a href="http://www.honghutech.com/nvidia-jeston-tx2/flashtx2" target="_blank" rel="noopener">參考文獻</a><br>JetPack-L4T-3.3-linux-x64_b39.run<br><img src="https://i.imgur.com/EGqDGZh.jpg" alt></p>
+<blockquote>
+<p>執行到此步驟時，需要設定ubuntu主機與TX2的網路設置，才可順利繼續進行</p>
+</blockquote>
+<p><img src="https://i.imgur.com/1EXxJod.jpg" alt></p>
+<blockquote>
+<p>執行到此步驟即可關閉小黑窗，結束刷機的執行</p>
+</blockquote>
+<h3 id="Pytorch"><a href="#Pytorch" class="headerlink" title="Pytorch"></a>Pytorch</h3><p><a href="https://www.ncnynl.com/archives/201706/1755.html" target="_blank" rel="noopener">參考文獻(安裝)</a><br><a href="https://oldpan.me/archives/nvidia-jetson-tx2-source-build-pytorch" target="_blank" rel="noopener">參考文獻(安裝)</a><br><a href="https://blog.csdn.net/accumulate_zhang/article/details/80269313" target="_blank" rel="noopener">參考文獻(pip3 Error)</a></p>
+<p>Version: 1.0.0</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"># 對剛刷完機的機器進行套件更新</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br><span class="line">sudo apt-get dist-upgrade -y</span><br><span class="line">sudo apt autoremove</span><br><span class="line"></span><br><span class="line"># 下載pytorch包</span><br><span class="line">git clone http://github.com/pytorch/pytorch</span><br><span class="line"><span class="built_in">cd</span> pytorch/</span><br><span class="line">git checkout -b v1.<span class="number">0</span>.<span class="number">0</span> v1.<span class="number">0</span>.<span class="number">0</span></span><br><span class="line"></span><br><span class="line"># 安裝pip3</span><br><span class="line">sudo apt-get install python3-pip</span><br><span class="line"></span><br><span class="line"># 對第三方庫進行更新</span><br><span class="line">sudo pip3 install -U setuptools</span><br><span class="line">sudo pip3 install -r requirements.txt</span><br><span class="line">git submodule update --init --recursive</span><br><span class="line"></span><br><span class="line"># 設定CUDNN路徑</span><br><span class="line">sudo gedit ~/.bashrc</span><br><span class="line">export CUDNN_LIB_DIR=/usr/lib/aarch64-linux-gnu</span><br><span class="line">export CUDNN_INCLUDE_DIR=/usr/include</span><br><span class="line">source ~/.bashrc</span><br><span class="line"></span><br><span class="line">sudo apt-get install python3-dev</span><br><span class="line"></span><br><span class="line"># 更新pip3及解決pip3 Error問題</span><br><span class="line">sudo pip3 install --upgrade pip</span><br><span class="line">sudo vi /usr/bin/pip3</span><br><span class="line">from pip import __main__</span><br><span class="line"><span class="keyword">if</span> __name__ == '__main__':</span><br><span class="line">    sys.<span class="keyword">exit</span>(__main__._main())</span><br><span class="line"></span><br><span class="line"># 安裝相關處理套件</span><br><span class="line">sudo pip3 install numpy</span><br><span class="line">sudo apt-get install python3-pandas</span><br><span class="line">sudo pip3 install scikit-build</span><br><span class="line">sudo apt-get -y install cmake</span><br><span class="line">sudo apt install libffi-dev</span><br><span class="line">sudo pip3 install cffi</span><br><span class="line"></span><br><span class="line"># 編譯與執行 (需跑兩小時以上)</span><br><span class="line"># 最後會跑出WARNING: 'develop' is <span class="keyword">not</span> building C++ code incrementally，可無視</span><br><span class="line">sudo python3 setup.py build_deps</span><br><span class="line">sudo python3 setup.py develop</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="補充圖片"><a href="#補充圖片" class="headerlink" title="補充圖片"></a>補充圖片</h3><p><img src="https://i.imgur.com/zIUdGRK.png" alt></p>
+<blockquote>
+<p>透過git指令觀看可選擇的PyTorch版本及確認目前的git狀態</p>
+</blockquote>
+<p><img src="https://i.imgur.com/XpeBinA.png" alt></p>
+<blockquote>
+<p>設定網路，確認無人使用IP填入Address和Gateway中</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://franksm.github.io/2019/08/21/TX2刷機與Pytorch安裝/" data-id="ck8zoxkdd0001o3nel6oe4pxf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Edge-Computing/">Edge Computing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PyTorch/">PyTorch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TX2/">TX2</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/14/D3-js基礎-考試成績情境/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">D3.js基礎(考試成績情境)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">標籤</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/D3-js/">D3.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Edge-Computing/">Edge Computing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pandas/">Pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyTorch/">PyTorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scrapy/">Scrapy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TX2/">TX2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visualizing/">Visualizing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codewars/">codewars</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crawler/">crawler</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">標籤雲</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/D3-js/" style="font-size: 10px;">D3.js</a> <a href="/tags/Edge-Computing/" style="font-size: 10px;">Edge Computing</a> <a href="/tags/Pandas/" style="font-size: 10px;">Pandas</a> <a href="/tags/PyTorch/" style="font-size: 10px;">PyTorch</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Scrapy/" style="font-size: 10px;">Scrapy</a> <a href="/tags/TX2/" style="font-size: 10px;">TX2</a> <a href="/tags/Visualizing/" style="font-size: 10px;">Visualizing</a> <a href="/tags/codewars/" style="font-size: 10px;">codewars</a> <a href="/tags/crawler/" style="font-size: 10px;">crawler</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">彙整</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/08/21/TX2刷機與Pytorch安裝/">TX2刷機與Pytorch安裝</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/14/D3-js基礎-考試成績情境/">D3.js基礎(考試成績情境)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/13/Python-Scrapy基礎-火車訂票情境/">Python Scrapy基礎 (火車訂票情境)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/12/Python-Pandas基礎-BMI情境/">Python Pandas基礎 (BMI情境)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/01/first/">Python 程式解題 (1)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Shih-Meng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

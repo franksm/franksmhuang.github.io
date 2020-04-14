@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Python 程式解題 (1) | 仕孟的Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="編輯 : Frank日期 : 2019/08/01參考網站">
+<meta name="keywords" content="Python,codewars">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 程式解題 (1)">
+<meta property="og:url" content="http://franksm.github.io/2019/08/01/first/index.html">
+<meta property="og:site_name" content="仕孟的Blog">
+<meta property="og:description" content="編輯 : Frank日期 : 2019/08/01參考網站">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:updated_time" content="2019-08-31T20:59:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python 程式解題 (1)">
+<meta name="twitter:description" content="編輯 : Frank日期 : 2019/08/01參考網站">
+  
+    <link rel="alternate" href="/atom.xml" title="仕孟的Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">仕孟的Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">日常筆記</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜尋"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://franksm.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-first" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/01/first/" class="article-date">
+  <time datetime="2019-08-01T04:36:19.000Z" itemprop="datePublished">2019-08-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python 程式解題 (1)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>編輯 : Frank<br>日期 : 2019/08/01<br><a href="https://www.codewars.com/" target="_blank" rel="noopener">參考網站</a></p>
+</blockquote>
+<hr>
+<a id="more"></a>
+
+<h3 id="題目-Screen-Locking-Patterns"><a href="#題目-Screen-Locking-Patterns" class="headerlink" title="題目: Screen Locking Patterns"></a>題目: Screen Locking Patterns</h3><p><a href="https://www.codewars.com/kata/screen-locking-patterns/train/python" target="_blank" rel="noopener">題目內容</a></p>
+<h3 id="解題觀念"><a href="#解題觀念" class="headerlink" title="解題觀念:"></a>解題觀念:</h3><h4 id="了解所有移動方式"><a href="#了解所有移動方式" class="headerlink" title="了解所有移動方式"></a>了解所有移動方式</h4><p>幫助所有節點去設置所有可滑動方向的路徑，分別有以下組合:<br>左上,上,右上,左,右,左下,下,右下<br>左左上,右右上,左左下,右右下<br>左上上,右上上<br>(共16筆)</p>
+<p>透過 dict 型態來存取節點(key)和可滑動方向路徑(value)</p>
+<p>{<br>‘A’:[左上,右上,….]<br>‘B’:[左上,右上,….]<br>……<br>}</p>
+<blockquote>
+<p>每個節點的可滑動方向路徑順序存取需一致，可解決節點已使用的問題<br>如若可滑動方向路徑上無節點,宣告為’null’</p>
+</blockquote>
+<h4 id="尋找所有節點的走訪"><a href="#尋找所有節點的走訪" class="headerlink" title="尋找所有節點的走訪"></a>尋找所有節點的走訪</h4><p>透過遞迴函數來持續往下進行節點的滑動</p>
+<blockquote>
+<p>若可移動方向節點為’null’,則不做事<br>若節點已使用過,則根據相同方向探索下一個節點</p>
+</blockquote>
+<h3 id="解題程式碼"><a href="#解題程式碼" class="headerlink" title="解題程式碼:"></a>解題程式碼:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding:utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 探討節點的移動方式</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getlink</span><span class="params">(i,j)</span>:</span></span><br><span class="line"></span><br><span class="line">    element_link = [] <span class="comment"># 該節點的移動方式</span></span><br><span class="line">  </span><br><span class="line">    <span class="keyword">if</span> i<span class="number">-1</span> &gt;= <span class="number">0</span> <span class="keyword">and</span> j<span class="number">-1</span> &gt;= <span class="number">0</span>:</span><br><span class="line">        element_link.append(map[i<span class="number">-1</span>][j<span class="number">-1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        element_link.append(<span class="string">'null'</span>)</span><br><span class="line">    <span class="keyword">if</span> j<span class="number">-1</span> &gt;= <span class="number">0</span>:</span><br><span class="line">        element_link.append(map[i][j<span class="number">-1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        element_link.append(<span class="string">'null'</span>)</span><br><span class="line">    <span class="keyword">if</span> i+<span class="number">1</span> &lt; <span class="number">3</span> <span class="keyword">and</span> j<span class="number">-1</span> &gt;= <span class="number">0</span>:</span><br><span class="line">        element_link.append(map[i+<span class="number">1</span>][j<span class="number">-1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        element_link.append(<span class="string">'null'</span>)</span><br><span class="line">    <span class="keyword">if</span> i<span class="number">-1</span> &gt;= <span class="number">0</span>:</span><br><span class="line">        element_link.append(map[i<span class="number">-1</span>][j])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        element_link.append(<span class="string">'null'</span>)</span><br><span class="line">    <span class="keyword">if</span> i+<span class="number">1</span> &lt; <span class="number">3</span>:</span><br><span class="line">        element_link.append(map[i+<span class="number">1</span>][j])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        element_link.append(<span class="string">'null'</span>)</span><br><span class="line">    <span class="keyword">if</span> i<span class="number">-1</span> &gt;= <span class="number">0</span> <span class="keyword">and</span> j+<span class="number">1</span> &lt; <span class="number">3</span>:</span><br><span class="line">        element_link.append(map[i<span class="number">-1</span>][j+<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        element_link.append(<span class="string">'null'</span>)</span><br><span class="line">    <span class="keyword">if</span> j+<span class="number">1</span> &lt; <span class="number">3</span>:</span><br><span class="line">        element_link.append(map[i][j+<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        element_link.append(<span class="string">'null'</span>)</span><br><span class="line">    <span class="keyword">if</span> i+<span class="number">1</span> &lt; <span class="number">3</span> <span class="keyword">and</span> j+<span class="number">1</span> &lt; <span class="number">3</span>:</span><br><span class="line">        element_link.append(map[i+<span class="number">1</span>][j+<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        element_link.append(<span class="string">'null'</span>)</span><br><span class="line">    <span class="keyword">if</span> i<span class="number">-2</span> &gt;= <span class="number">0</span> <span class="keyword">and</span> j<span class="number">-1</span> &gt;= <span class="number">0</span>:</span><br><span class="line">        element_link.append(map[i<span class="number">-2</span>][j<span class="number">-1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        element_link.append(<span class="string">'null'</span>)</span><br><span class="line">    <span class="keyword">if</span> i+<span class="number">2</span> &lt; <span class="number">3</span> <span class="keyword">and</span> j<span class="number">-1</span> &gt;= <span class="number">0</span>:</span><br><span class="line">        element_link.append(map[i+<span class="number">2</span>][j<span class="number">-1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        element_link.append(<span class="string">'null'</span>)</span><br><span class="line">    <span class="keyword">if</span> i+<span class="number">2</span> &lt; <span class="number">3</span> <span class="keyword">and</span> j+<span class="number">1</span> &lt; <span class="number">3</span>:</span><br><span class="line">        element_link.append(map[i+<span class="number">2</span>][j+<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        element_link.append(<span class="string">'null'</span>)</span><br><span class="line">    <span class="keyword">if</span> i<span class="number">-2</span> &gt;= <span class="number">0</span> <span class="keyword">and</span> j+<span class="number">1</span> &lt; <span class="number">3</span>:</span><br><span class="line">        element_link.append(map[i<span class="number">-2</span>][j+<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        element_link.append(<span class="string">'null'</span>)</span><br><span class="line">    <span class="keyword">if</span> i+<span class="number">1</span> &lt; <span class="number">3</span> <span class="keyword">and</span> j+<span class="number">2</span> &lt; <span class="number">3</span>:</span><br><span class="line">        element_link.append(map[i+<span class="number">1</span>][j+<span class="number">2</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        element_link.append(<span class="string">'null'</span>)</span><br><span class="line">    <span class="keyword">if</span> i+<span class="number">1</span> &lt; <span class="number">3</span> <span class="keyword">and</span> j<span class="number">-2</span> &gt;= <span class="number">0</span>:</span><br><span class="line">        element_link.append(map[i+<span class="number">1</span>][j<span class="number">-2</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        element_link.append(<span class="string">'null'</span>)</span><br><span class="line">    <span class="keyword">if</span> i<span class="number">-1</span> &gt;= <span class="number">0</span> <span class="keyword">and</span> j<span class="number">-2</span> &gt;= <span class="number">0</span>:</span><br><span class="line">        element_link.append(map[i<span class="number">-1</span>][j<span class="number">-2</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        element_link.append(<span class="string">'null'</span>)</span><br><span class="line">    <span class="keyword">if</span> i<span class="number">-1</span> &gt;= <span class="number">0</span> <span class="keyword">and</span> j+<span class="number">2</span> &lt; <span class="number">3</span>:</span><br><span class="line">        element_link.append(map[i<span class="number">-1</span>][j+<span class="number">2</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        element_link.append(<span class="string">'null'</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> element_link</span><br><span class="line"></span><br><span class="line">map = [[<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>],[<span class="string">'D'</span>,<span class="string">'E'</span>,<span class="string">'F'</span>],[<span class="string">'G'</span>,<span class="string">'H'</span>,<span class="string">'I'</span>]] <span class="comment"># 節點的位置分佈</span></span><br><span class="line">all_link = &#123;&#125; <span class="comment"># 所有節點的移動方式</span></span><br><span class="line">sum = <span class="number">0</span> <span class="comment"># 計算路線整體次數</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 探討所有節點的移動方式，並完成all_link的建置</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">        all_link[map[i][j]] = getlink(i,j)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 遞迴捕捉所有移動方式(移動剩餘次數,移動的節點,未使用的節點,上一個移動路徑,存取節點移動路徑)</span></span><br><span class="line"><span class="comment"># 移動次數:可判斷是否停止移動</span></span><br><span class="line"><span class="comment"># 未使用的節點:可判斷該節點是否被使用</span></span><br><span class="line"><span class="comment"># 上一個移動路徑: 當節點已使用時，透過此路徑可進行節點穿越的動作</span></span><br><span class="line"><span class="comment"># 存取節點的移動路徑:僅供除錯與檢查使用,可以不宣告</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">re</span><span class="params">(count,point,element,i,path)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> sum</span><br><span class="line">    <span class="comment"># 判斷此移動節點是否使用過</span></span><br><span class="line">    <span class="keyword">if</span> point <span class="keyword">in</span> element:</span><br><span class="line">        <span class="comment"># 是否可停止移動</span></span><br><span class="line">        <span class="keyword">if</span> count == <span class="number">0</span>:</span><br><span class="line">            <span class="comment"># 顯示移動方式</span></span><br><span class="line">            <span class="keyword">print</span> path+point</span><br><span class="line">            sum+=<span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># 移除此節點，代表該節點已被使用</span></span><br><span class="line">            element = element.replace(point,<span class="string">''</span>)</span><br><span class="line">            <span class="comment"># 透過該節點進行下一個節點的移動</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">16</span>):</span><br><span class="line">                <span class="keyword">if</span> all_link[point][i] != <span class="string">'null'</span>:</span><br><span class="line">                    re(count<span class="number">-1</span>,all_link[point][i],element,i,path+point)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># 根據使用過的移動節點，再次探索同方向的下一個節點</span></span><br><span class="line">        <span class="keyword">if</span> all_link[point][i] != <span class="string">'null'</span>:</span><br><span class="line">            re(count,all_link[point][i],element,i,path)</span><br><span class="line">            </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count_patterns_from</span><span class="params">(firstPoint, length)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">global</span> sum</span><br><span class="line">    <span class="comment"># 刷新sum數值</span></span><br><span class="line">    sum = <span class="number">0</span></span><br><span class="line">    <span class="comment"># 所有節點元素</span></span><br><span class="line">    element = <span class="string">'ABCDEFGHI'</span>   </span><br><span class="line">    <span class="comment"># 解決特殊情形</span></span><br><span class="line">    <span class="keyword">if</span> length &lt; <span class="number">1</span> <span class="keyword">or</span> length &gt; <span class="number">9</span> <span class="keyword">or</span> firstPoint <span class="keyword">not</span> <span class="keyword">in</span> element:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># 404可隨意設置，第一個節點不會使用到此參數</span></span><br><span class="line">        re(length<span class="number">-1</span>,firstPoint,element,<span class="number">404</span>,<span class="string">''</span>)</span><br><span class="line">        <span class="keyword">return</span> sum</span><br></pre></td></tr></table></figure>
+
+<h3 id="另類解法"><a href="#另類解法" class="headerlink" title="另類解法"></a>另類解法</h3><ol>
+<li>提前運算所有答案，並存入陣列備用<ul>
+<li>優點: 不論count_patterns_from執行多少次，都可快速得知答案</li>
+<li>解題技巧: 可將答案分為此三類[ACGI,BDFH,E],不需所有節點都運算</li>
+</ul>
+</li>
+<li>存取可移動路徑與穿越路徑(無須存取路徑為null的節點)<ul>
+<li>優點: 無須探索所有方向的移動路徑</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="Frank-huang-另類解法-2"><a href="#Frank-huang-另類解法-2" class="headerlink" title="Frank_huang 另類解法 2"></a>Frank_huang 另類解法 2</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding:utf-8</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sum = 0 <span class="comment"># 計算路線整體次數</span></span><br><span class="line"></span><br><span class="line">DIRECT = &#123;<span class="string">'A'</span>:<span class="built_in">set</span>(<span class="string">'BFEHD'</span>), <span class="string">'B'</span>:<span class="built_in">set</span>(<span class="string">'ACFIEGD'</span>), <span class="string">'C'</span>:<span class="built_in">set</span>(<span class="string">'BFHED'</span>), <span class="string">'D'</span>:<span class="built_in">set</span>(<span class="string">'ABCEIHG'</span>),</span><br><span class="line">            <span class="string">'E'</span>:<span class="built_in">set</span>(<span class="string">'ABCDFGHI'</span>), <span class="string">'F'</span>:<span class="built_in">set</span>(<span class="string">'ABCEGHI'</span>), <span class="string">'G'</span>:<span class="built_in">set</span>(<span class="string">'DBEFH'</span>), </span><br><span class="line">            <span class="string">'H'</span>:<span class="built_in">set</span>(<span class="string">'GDAECFI'</span>), <span class="string">'I'</span>:<span class="built_in">set</span>(<span class="string">'HDEBF'</span>)&#125;</span><br><span class="line">OVER = &#123;<span class="string">'A'</span>:&#123;<span class="string">'B'</span>:<span class="string">'C'</span>, <span class="string">'E'</span>:<span class="string">'I'</span>, <span class="string">'D'</span>:<span class="string">'G'</span>&#125;, <span class="string">'B'</span>:&#123;<span class="string">'E'</span>:<span class="string">'H'</span>&#125;, <span class="string">'C'</span>:&#123;<span class="string">'B'</span>:<span class="string">'A'</span>, <span class="string">'E'</span>:<span class="string">'G'</span>, <span class="string">'F'</span>:<span class="string">'I'</span>&#125;, <span class="string">'D'</span>:&#123;<span class="string">'E'</span>:<span class="string">'F'</span>&#125;,</span><br><span class="line">           <span class="string">'F'</span>:&#123;<span class="string">'E'</span>:<span class="string">'D'</span>&#125;, <span class="string">'G'</span>:&#123;<span class="string">'D'</span>:<span class="string">'A'</span>, <span class="string">'E'</span>:<span class="string">'C'</span>, <span class="string">'H'</span>:<span class="string">'I'</span>&#125;, <span class="string">'G'</span>:&#123;<span class="string">'D'</span>:<span class="string">'A'</span>, <span class="string">'E'</span>:<span class="string">'C'</span>, <span class="string">'H'</span>:<span class="string">'I'</span>&#125;,</span><br><span class="line">           <span class="string">'H'</span>:&#123;<span class="string">'E'</span>:<span class="string">'B'</span>&#125;, <span class="string">'I'</span>:&#123;<span class="string">'H'</span>:<span class="string">'G'</span>, <span class="string">'E'</span>:<span class="string">'A'</span>, <span class="string">'F'</span>:<span class="string">'C'</span>&#125;, <span class="string">'E'</span>:&#123;&#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 遞迴捕捉所有移動方式(移動剩餘次數,移動的節點,未使用的節點,存取節點移動路徑)</span></span><br><span class="line"><span class="comment"># 移動次數:可判斷是否停止移動</span></span><br><span class="line"><span class="comment"># 未使用的節點:可判斷該節點是否被使用</span></span><br><span class="line"><span class="comment"># 存取節點的移動路徑:僅供除錯與檢查使用,可以不宣告</span></span><br><span class="line">def re(count,point,element,path):</span><br><span class="line">    global sum</span><br><span class="line">    <span class="comment"># 移除此節點，代表該節點已被使用</span></span><br><span class="line">    element = element.replace(point,<span class="string">''</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> count == 0:</span><br><span class="line">        <span class="comment"># 顯示移動方式</span></span><br><span class="line">        <span class="comment">#print path</span></span><br><span class="line">        sum+=1</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">    <span class="comment"># 透過該節點進行下一個節點的移動</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> DIRECT[point]:</span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">in</span> element:</span><br><span class="line">                re(count-1,i,element,path+i)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> i <span class="keyword">in</span> OVER[point] and OVER[point][i] <span class="keyword">in</span> element:</span><br><span class="line">                    re(count-1,OVER[point][i],element,path+point)</span><br><span class="line">                    </span><br><span class="line">def count_patterns_from(firstPoint, length):</span><br><span class="line"></span><br><span class="line">    global sum</span><br><span class="line">    <span class="comment"># 刷新sum數值</span></span><br><span class="line">    sum = 0</span><br><span class="line">    <span class="comment"># 所有節點元素</span></span><br><span class="line">    element = <span class="string">'ABCDEFGHI'</span>   </span><br><span class="line">    <span class="comment"># 解決特殊情形</span></span><br><span class="line">    <span class="keyword">if</span> length &lt; 1 or length &gt; 9 or firstPoint not <span class="keyword">in</span> element:</span><br><span class="line">        <span class="built_in">return</span> 0</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        re(length-1,firstPoint,element,firstPoint)</span><br><span class="line">        <span class="built_in">return</span> sum</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> range(<span class="number">200</span>):</span><br><span class="line"></span><br><span class="line">        all_pred = []</span><br><span class="line">        all_target = testY</span><br><span class="line">        sum = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> step, x <span class="keyword">in</span> enumerate(trainX):</span><br><span class="line">                b_x = x.view(BATCH_SIZE,TIME_STEP,DATA_SIZE)</span><br><span class="line">                b_y = trainY[step].view(BATCH_SIZE,<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">                output = cnnlstm(b_x)</span><br><span class="line">                loss = loss_func(output,b_y)</span><br><span class="line">                optimizer.zero_grad()</span><br><span class="line">                loss.backward()</span><br><span class="line">                optimizer.step()</span><br><span class="line"></span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> range(len(output)):</span><br><span class="line">                        sum = sum + pow((float(output[i]) - float(b_y[i])),<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">        sum = sum/(BATCH_SIZE*STEP_SIZE)</span><br><span class="line">        train_rmse = math.sqrt(sum)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> epoch % <span class="number">10</span> == <span class="number">0</span>:</span><br><span class="line"></span><br><span class="line">                output = cnnlstm(testX)</span><br><span class="line"></span><br><span class="line">                sum = <span class="number">0</span></span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> range(len(output)):</span><br><span class="line">                        sum = sum + pow((float(output[i]) - float(testY[i])),<span class="number">2</span>)</span><br><span class="line">                        all_pred.append(round(float(output[i]),<span class="number">6</span>))</span><br><span class="line"></span><br><span class="line">                sum = sum / len(output)</span><br><span class="line">                test_rmse = math.sqrt(sum)</span><br><span class="line"></span><br><span class="line">                print(<span class="string">'Epoch:'</span>,epoch)</span><br><span class="line">                print(<span class="string">'Target:'</span>,all_target)</span><br><span class="line">                print(<span class="string">'Pred:'</span>,all_pred)</span><br><span class="line">                print(<span class="string">'Train_RMSE:'</span>,train_rmse)</span><br><span class="line">                print(<span class="string">'Test_RMSE:'</span>,test_rmse)</span><br><span class="line">                print(<span class="string">'Loss:'</span>,loss)</span><br><span class="line">                print(<span class="string">'=============================================='</span>)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://franksm.github.io/2019/08/01/first/" data-id="ck8zoxkdx000po3ne1wo2yu0y" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codewars/">codewars</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/08/12/Python-Pandas基礎-BMI情境/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Python Pandas基礎 (BMI情境)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/08/01/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">標籤</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/D3-js/">D3.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Edge-Computing/">Edge Computing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pandas/">Pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyTorch/">PyTorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scrapy/">Scrapy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TX2/">TX2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visualizing/">Visualizing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codewars/">codewars</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crawler/">crawler</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">標籤雲</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/D3-js/" style="font-size: 10px;">D3.js</a> <a href="/tags/Edge-Computing/" style="font-size: 10px;">Edge Computing</a> <a href="/tags/Pandas/" style="font-size: 10px;">Pandas</a> <a href="/tags/PyTorch/" style="font-size: 10px;">PyTorch</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Scrapy/" style="font-size: 10px;">Scrapy</a> <a href="/tags/TX2/" style="font-size: 10px;">TX2</a> <a href="/tags/Visualizing/" style="font-size: 10px;">Visualizing</a> <a href="/tags/codewars/" style="font-size: 10px;">codewars</a> <a href="/tags/crawler/" style="font-size: 10px;">crawler</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">彙整</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/08/21/TX2刷機與Pytorch安裝/">TX2刷機與Pytorch安裝</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/14/D3-js基礎-考試成績情境/">D3.js基礎(考試成績情境)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/13/Python-Scrapy基礎-火車訂票情境/">Python Scrapy基礎 (火車訂票情境)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/12/Python-Pandas基礎-BMI情境/">Python Pandas基礎 (BMI情境)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/01/first/">Python 程式解題 (1)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Shih-Meng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
