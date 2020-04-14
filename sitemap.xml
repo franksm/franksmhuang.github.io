@@ -2,14 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://franksm.github.io/2019/08/12/Python-Pandas%E5%9F%BA%E7%A4%8E-BMI%E6%83%85%E5%A2%83/</loc>
+    <loc>http://franksm.github.io/2019/08/01/hello-world/</loc>
     
-    <lastmod>2019-08-31T20:59:24.000Z</lastmod>
+    <lastmod>2020-04-14T09:19:53.238Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://franksm.github.io/2019/08/21/TX2%E5%88%B7%E6%A9%9F%E8%88%87Pytorch%E5%AE%89%E8%A3%9D/</loc>
+    <loc>http://franksm.github.io/2020/04/14/Python-Django-API-rest/</loc>
+    
+    <lastmod>2020-04-14T09:18:56.421Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://franksm.github.io/2019/08/12/Python-Pandas%E5%9F%BA%E7%A4%8E-BMI%E6%83%85%E5%A2%83/</loc>
     
     <lastmod>2019-08-31T20:59:24.000Z</lastmod>
     
@@ -23,7 +30,7 @@
   </url>
   
   <url>
-    <loc>http://franksm.github.io/2019/08/01/hello-world/</loc>
+    <loc>http://franksm.github.io/2019/08/21/TX2%E5%88%B7%E6%A9%9F%E8%88%87Pytorch%E5%AE%89%E8%A3%9D/</loc>
     
     <lastmod>2019-08-31T20:59:24.000Z</lastmod>
     
