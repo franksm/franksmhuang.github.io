@@ -36,11 +36,39 @@
     
     
     
+      <category term="Laravel" scheme="http://franksm.github.io/tags/Laravel/"/>
+    
       <category term="PHP" scheme="http://franksm.github.io/tags/PHP/"/>
+    
+      <category term="DB" scheme="http://franksm.github.io/tags/DB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Laradock php-fpm nginx file_get_contents 連接被拒絕</title>
+    <link href="http://franksm.github.io/2020/03/27/Laradock-php-fpm-nginx-file-get-contents-%E9%80%A3%E6%8E%A5%E8%A2%AB%E6%8B%92%E7%B5%95/"/>
+    <id>http://franksm.github.io/2020/03/27/Laradock-php-fpm-nginx-file-get-contents-%E9%80%A3%E6%8E%A5%E8%A2%AB%E6%8B%92%E7%B5%95/</id>
+    <published>2020-03-27T01:42:53.000Z</published>
+    <updated>2020-04-15T01:44:18.767Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>編輯 : Frank<br>日期 : 2020/03/27<br><a href="https://github.com/laradock/laradock/issues/435" target="_blank" rel="noopener">參考網址</a></p></blockquote><hr><a id="more"></a><h2 id="情境"><a href="#情境" class="headerlink" title="情境"></a>情境</h2><p>使用 laravel 製作 api 來進行使用,但在使用此 api 時就顯示連線被拒絕的問題。</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$data = file_get_contents($urlApi);</span><br></pre></td></tr></table></figure><p>file_get_contents($urlApi): failed to open stream: Connection refused<br><img src="https://i.imgur.com/pdPEaGa.png" alt></p><h2 id="發生原因"><a href="#發生原因" class="headerlink" title="發生原因"></a>發生原因</h2><p>This seems to be an error where the containers on which the curl request are being made don’t know the proper IP address and thus are making their requests to “localhost”, meaning their own container (and not hitting the nginx container instead).</p><h2 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h2><p>首先為 nginx 定義 DNS</p><p>sudo vim /etc/hosts</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># docker laradock nginx use</span><br><span class="line">127.0.0.1 laravel.test</span><br></pre></td></tr></table></figure><p>隨後修改 laradock 內的 docker-compose.yml，將 nginx 網路連線設定給予aliase。</p><p>vim docker-compose.yml</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">networks:</span></span><br><span class="line">  <span class="attr">frontend:</span></span><br><span class="line">    <span class="attr">aliases:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">laravel.test</span></span><br><span class="line">  <span class="attr">backend:</span></span><br><span class="line">    <span class="attr">aliases:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">laravel.test</span></span><br></pre></td></tr></table></figure><p>修改結束後即可重啟服務就能解決問題了。</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker-compose down</span><br><span class="line">docker-compose up -d nginx mysql redis workspace</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;編輯 : Frank&lt;br&gt;日期 : 2020/03/27&lt;br&gt;&lt;a href=&quot;https://github.com/laradock/laradock/issues/435&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;參考網址&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="Docker" scheme="http://franksm.github.io/tags/Docker/"/>
     
       <category term="Laravel" scheme="http://franksm.github.io/tags/Laravel/"/>
     
-      <category term="DB" scheme="http://franksm.github.io/tags/DB/"/>
+      <category term="Laradock" scheme="http://franksm.github.io/tags/Laradock/"/>
     
   </entry>
   

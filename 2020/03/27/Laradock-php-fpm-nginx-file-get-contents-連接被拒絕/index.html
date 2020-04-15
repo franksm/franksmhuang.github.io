@@ -5,19 +5,22 @@
   
 
   
-  <title>彙整: 2020 | 仕孟的Blog</title>
+  <title>Laradock php-fpm nginx file_get_contents 連接被拒絕 | 仕孟的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="每日一篇,持續進步">
-<meta name="keywords" content="Code">
-<meta property="og:type" content="website">
-<meta property="og:title" content="仕孟的Blog">
-<meta property="og:url" content="http://franksm.github.io/archives/2020/index.html">
+  <meta name="description" content="編輯 : Frank日期 : 2020/03/27參考網址">
+<meta name="keywords" content="Docker,Laravel,Laradock">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Laradock php-fpm nginx file_get_contents 連接被拒絕">
+<meta property="og:url" content="http://franksm.github.io/2020/03/27/Laradock-php-fpm-nginx-file-get-contents-連接被拒絕/index.html">
 <meta property="og:site_name" content="仕孟的Blog">
-<meta property="og:description" content="每日一篇,持續進步">
+<meta property="og:description" content="編輯 : Frank日期 : 2020/03/27參考網址">
 <meta property="og:locale" content="zh-TW">
+<meta property="og:image" content="https://i.imgur.com/pdPEaGa.png">
+<meta property="og:updated_time" content="2020-04-15T01:44:18.767Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="仕孟的Blog">
-<meta name="twitter:description" content="每日一篇,持續進步">
+<meta name="twitter:title" content="Laradock php-fpm nginx file_get_contents 連接被拒絕">
+<meta name="twitter:description" content="編輯 : Frank日期 : 2020/03/27參考網址">
+<meta name="twitter:image" content="https://i.imgur.com/pdPEaGa.png">
   
     <link rel="alternate" href="/atom.xml" title="仕孟的Blog" type="application/atom+xml">
   
@@ -68,97 +71,84 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/04/08/PHP-Laravel-Model/" class="archive-article-date">
-  <time datetime="2020-04-08T09:22:45.000Z" itemprop="datePublished">4月 8</time>
+        <section id="main"><article id="post-Laradock-php-fpm-nginx-file-get-contents-連接被拒絕" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/27/Laradock-php-fpm-nginx-file-get-contents-連接被拒絕/" class="article-date">
+  <time datetime="2020-03-27T01:42:53.000Z" itemprop="datePublished">2020-03-27</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/08/PHP-Laravel-Model/">PHP Laravel Model</a>
+    <h1 class="article-title" itemprop="name">
+      Laradock php-fpm nginx file_get_contents 連接被拒絕
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/03/27/Laradock-php-fpm-nginx-file-get-contents-連接被拒絕/" class="archive-article-date">
-  <time datetime="2020-03-27T01:42:53.000Z" itemprop="datePublished">3月 27</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/27/Laradock-php-fpm-nginx-file-get-contents-連接被拒絕/">Laradock php-fpm nginx file_get_contents 連接被拒絕</a>
-    </h1>
-  
+        <blockquote>
+<p>編輯 : Frank<br>日期 : 2020/03/27<br><a href="https://github.com/laradock/laradock/issues/435" target="_blank" rel="noopener">參考網址</a></p>
+</blockquote>
+<hr>
+<a id="more"></a>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/03/12/Week7-CS50x-SQL/" class="archive-article-date">
-  <time datetime="2020-03-12T01:27:45.000Z" itemprop="datePublished">3月 12</time>
-</a>
+<h2 id="情境"><a href="#情境" class="headerlink" title="情境"></a>情境</h2><p>使用 laravel 製作 api 來進行使用,但在使用此 api 時就顯示連線被拒絕的問題。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$data = file_get_contents($urlApi);</span><br></pre></td></tr></table></figure>
+
+<p>file_get_contents($urlApi): failed to open stream: Connection refused<br><img src="https://i.imgur.com/pdPEaGa.png" alt></p>
+<h2 id="發生原因"><a href="#發生原因" class="headerlink" title="發生原因"></a>發生原因</h2><p>This seems to be an error where the containers on which the curl request are being made don’t know the proper IP address and thus are making their requests to “localhost”, meaning their own container (and not hitting the nginx container instead).</p>
+<h2 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h2><p>首先為 nginx 定義 DNS</p>
+<p>sudo vim /etc/hosts</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># docker laradock nginx use</span><br><span class="line">127.0.0.1 laravel.test</span><br></pre></td></tr></table></figure>
+
+<p>隨後修改 laradock 內的 docker-compose.yml，將 nginx 網路連線設定給予aliase。</p>
+<p>vim docker-compose.yml</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">networks:</span></span><br><span class="line">  <span class="attr">frontend:</span></span><br><span class="line">    <span class="attr">aliases:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">laravel.test</span></span><br><span class="line">  <span class="attr">backend:</span></span><br><span class="line">    <span class="attr">aliases:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">laravel.test</span></span><br></pre></td></tr></table></figure>
+
+<p>修改結束後即可重啟服務就能解決問題了。</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker-compose down</span><br><span class="line">docker-compose up -d nginx mysql redis workspace</span><br></pre></td></tr></table></figure>
+
+
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/12/Week7-CS50x-SQL/">Week7 - CS50x (SQL)</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/03/09/Git-問答篇/" class="archive-article-date">
-  <time datetime="2020-03-09T01:37:12.000Z" itemprop="datePublished">3月 9</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://franksm.github.io/2020/03/27/Laradock-php-fpm-nginx-file-get-contents-連接被拒絕/" data-id="ck90o96lw0003buneu02raf56" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/09/Git-問答篇/">Git (問答篇)</a>
-    </h1>
-  
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Laradock/">Laradock</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Laravel/">Laravel</a></li></ul>
 
-    </header>
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/04/08/PHP-Laravel-Model/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          PHP Laravel Model
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2020/03/12/Week7-CS50x-SQL/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Week7 - CS50x (SQL)</div>
+    </a>
   
+</nav>
 
+  
+</article>
 
 </section>
         
