@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Git (問答篇) | 仕孟的Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="編輯 : Frank日期 : 2020/03/09參考網址">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git (問答篇)">
+<meta property="og:url" content="http://franksm.github.io/2020/03/09/Git-問答篇/index.html">
+<meta property="og:site_name" content="仕孟的Blog">
+<meta property="og:description" content="編輯 : Frank日期 : 2020/03/09參考網址">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:updated_time" content="2020-04-15T01:41:12.872Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git (問答篇)">
+<meta name="twitter:description" content="編輯 : Frank日期 : 2020/03/09參考網址">
+  
+    <link rel="alternate" href="/atom.xml" title="仕孟的Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">仕孟的Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">日常筆記</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜尋"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://franksm.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Git-問答篇" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/09/Git-問答篇/" class="article-date">
+  <time datetime="2020-03-09T01:37:12.000Z" itemprop="datePublished">2020-03-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Git (問答篇)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>編輯 : Frank<br>日期 : 2020/03/09<br><a href="https://gitbook.tw" target="_blank" rel="noopener">參考網址</a></p>
+</blockquote>
+<hr>
+<a id="more"></a>
+
+<p>從問答中學習如何操作 Git ，多種情境皆可解決你多種困境，如仍無法解決，請點開連結-&gt; <a href="https://gitbook.tw" target="_blank" rel="noopener">為你自己學 Git</a><br><br></p>
+<ol>
+<li>(本機操作)如何建立分支、切換分支、合併分支？</li>
+</ol>
+<p>建立分支</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch [branch_name]</span><br></pre></td></tr></table></figure>
+
+<p>切換分支</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git switch [branch_name]</span><br><span class="line">git chackout [branch_name]</span><br></pre></td></tr></table></figure>
+
+<p>合併分支</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git merge [branch_name]</span><br><span class="line">git rebase [branch_name]</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>(本機操作)如果不小心把某個檔案或目錄刪除了，該怎麼救回來？</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">restore</span> [file_name]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>(本機操作)如果不小心把某個分支刪除了，該怎麼救回來？</p>
+</li>
+</ol>
+<p>需要取得commit紀錄，在刪除當下會輸出最後commit紀錄，可通過此紀錄來重新復原branch，或者通過git reflog來觀看歷史紀錄，然後來復原此紀錄來復原branch。</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch [branch_name] [commit_message]</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><p>(本機操作)如何回到某一次 Commit 的檔案狀態？</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout [commit_message]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>(本機操作)想要知道某個檔案的某一行程式碼是誰寫的，可以怎麼做？</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git blame [file]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>(本機操作)專案中可能有些比較機密的檔案（例如資料庫設定檔），在使用 Git 時，你通常會怎麼處理這類型的檔案？</p>
+</li>
+</ol>
+<p>透過 .gitignore 來讓 git 不會 add 與 commit 檔案，如果先前已傳送過的，需 git rm –cached 來移除檔案。</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim .gitignore</span><br><span class="line">[ignore_file_name]</span><br><span class="line">....</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>(本機操作)請簡述 “git merge” 與 “git rebase” 這兩種不同的分支合併方式。</li>
+</ol>
+<blockquote>
+<p>merge 會製造一個連接點來聯繫兩個 branch ，而 rebase 會直接把兩個 branch 直接連在一起，沒有連接點。</p>
+</blockquote>
+<ol start="8">
+<li>(本機操作)如果你正在某個分支進行開發，突然被長官交待處理別的問題，這時候你會怎麼處理手邊的工作？</li>
+</ol>
+<blockquote>
+<p>把當下的工作先進行 commit ，然後處理完成長官的問題後，在切回剛剛處理的 commit ，並透過 git reset HEAD^ 來繼續進行。</p>
+</blockquote>
+<ol start="9">
+<li>(本機操作)請問 “git checkout features/cat” 這個指令可能是什麼意思？</li>
+</ol>
+<blockquote>
+<p>git checkout [branch_name] : 切換branch<br>git checkout [file_name] : 還原檔案到上一個 commit 或 追蹤前。</p>
+</blockquote>
+<ol start="10">
+<li>(本機操作)如果不小心用 “git reset –hard” 指令把檔案刪除了，要怎麼救回來？</li>
+</ol>
+<p>透過 reflog 來觀測 reset 前的紀錄，並透過 checkout 來還原檔案至指定的 commit 狀態</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br><span class="line">git checkout [commit_message] [file_name]</span><br></pre></td></tr></table></figure>
+
+<ol start="11">
+<li>(遠端操作)如何把本機的進度推一份到 GitHub 上？</li>
+</ol>
+<p>可透過 git 指令來 push 至 GitHub 上，或者透過 GitHub 網頁直接編輯與 commit ＆ push 資料。</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line">git add .</span><br><span class="line">git commit -m "commit_description"</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<ol start="12">
+<li>(遠端操作)請說明 “git clone”、”git fetch” 跟 “git pull” 這三個指令的差異。</li>
+</ol>
+<blockquote>
+<ul>
+<li><strong>clone:</strong> 將整個檔案複製一份到你的電腦裡，並且在你的電腦裡建立相對應的標案及目錄。通常在最一開始使用。</li>
+<li><strong>fetch:</strong> 將本機端沒有，但專案有的資料把他拉下來，並且形成一個分支，達到只下載不合併的功能。</li>
+<li><strong>pull:</strong> 與 fetch 相似，將資料拉下來，但他會自動進行 merge ，因此也可以說 pull 就包含了 fetch + merge 的功能。</li>
+</ul>
+</blockquote>
+<ol start="13">
+<li>(遠端操作)你曾經使用過 “git push -f “ 指令嗎？在什麼情境下用的？</li>
+</ol>
+<blockquote>
+<p>沒有使用過。</p>
+</blockquote>
+<blockquote>
+<p>此方法大多用與 rebase 配合使用。隨著專案的進程，commit 資訊會越來越多越來越亂，因此你會使用 rebase 來整理與修改資訊，但 rebase 會修改掉已發生的事實，因此就需要 git push -f 來進行。此方法僅推薦在於自己獨立分支上，這樣才能避免造成隊員的困擾，並且在使用前請再三確認再執行。</p>
+</blockquote>
+<ol start="14">
+<li>(遠端操作)承上，如果你發現某位同事使用了 “git push -f” 把線上的東西蓋掉了，該怎麼辦？</li>
+</ol>
+<blockquote>
+<p>將自己或其他同事的再次進行 git push -f 來遮蓋那位同事將線上東西蓋掉的事實即可。</p>
+</blockquote>
+<ol start="15">
+<li>(遠端操作)在團隊一起工作的時候，如果你上傳了一個 commit，你發現這個 commit 有問題想取消它，你會怎麼做？</li>
+</ol>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git revert [commit_message]</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://franksm.github.io/2020/03/09/Git-問答篇/" data-id="ck90o5c8r00009pne1nrjdi07" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/03/12/Week7-CS50x-SQL/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Week7 - CS50x (SQL)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/19/Python-Django-API-rest/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python Django API (rest)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">標籤</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/API/">API</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/D3-js/">D3.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Edge-Computing/">Edge Computing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pandas/">Pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyTorch/">PyTorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scrapy/">Scrapy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TX2/">TX2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visualizing/">Visualizing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codewars/">codewars</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crawler/">crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlite3/">sqlite3</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">標籤雲</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/D3-js/" style="font-size: 10px;">D3.js</a> <a href="/tags/DB/" style="font-size: 10px;">DB</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Edge-Computing/" style="font-size: 10px;">Edge Computing</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Laravel/" style="font-size: 10px;">Laravel</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Pandas/" style="font-size: 10px;">Pandas</a> <a href="/tags/PyTorch/" style="font-size: 10px;">PyTorch</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Scrapy/" style="font-size: 10px;">Scrapy</a> <a href="/tags/TX2/" style="font-size: 10px;">TX2</a> <a href="/tags/Visualizing/" style="font-size: 10px;">Visualizing</a> <a href="/tags/codewars/" style="font-size: 10px;">codewars</a> <a href="/tags/crawler/" style="font-size: 10px;">crawler</a> <a href="/tags/sqlite3/" style="font-size: 10px;">sqlite3</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">彙整</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/08/PHP-Laravel-Model/">PHP Laravel Model</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/12/Week7-CS50x-SQL/">Week7 - CS50x (SQL)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/09/Git-問答篇/">Git (問答篇)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/19/Python-Django-API-rest/">Python Django API (rest)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/21/TX2刷機與Pytorch安裝/">TX2刷機與Pytorch安裝</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Shih-Meng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
