@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Week7 - CS50x (SQL) | 仕孟的Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="編輯 : Frank日期 : 2020/03/12參考網址">
+<meta name="keywords" content="Python,SQL,sqlite3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Week7 - CS50x (SQL)">
+<meta property="og:url" content="http://franksm.github.io/2020/03/12/Week7-CS50x-SQL/index.html">
+<meta property="og:site_name" content="仕孟的Blog">
+<meta property="og:description" content="編輯 : Frank日期 : 2020/03/12參考網址">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:image" content="https://i.imgur.com/DCSzx6h.png">
+<meta property="og:image" content="https://i.imgur.com/SeV6Aon.png">
+<meta property="og:image" content="https://i.imgur.com/SeV6Aon.png">
+<meta property="og:updated_time" content="2020-04-15T01:29:57.788Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Week7 - CS50x (SQL)">
+<meta name="twitter:description" content="編輯 : Frank日期 : 2020/03/12參考網址">
+<meta name="twitter:image" content="https://i.imgur.com/DCSzx6h.png">
+  
+    <link rel="alternate" href="/atom.xml" title="仕孟的Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">仕孟的Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">日常筆記</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜尋"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://franksm.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Week7-CS50x-SQL" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/12/Week7-CS50x-SQL/" class="article-date">
+  <time datetime="2020-03-12T01:27:45.000Z" itemprop="datePublished">2020-03-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Week7 - CS50x (SQL)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>編輯 : Frank<br>日期 : 2020/03/12<br><a href="https://cs50.harvard.edu/x/2020/weeks/7/" target="_blank" rel="noopener">參考網址</a></p>
+</blockquote>
+<hr>
+<a id="more"></a>
+
+<h2 id="Favorite-TV"><a href="#Favorite-TV" class="headerlink" title="Favorite TV"></a>Favorite TV</h2><blockquote>
+<p><a href="https://docs.google.com/forms/d/1_Vf4i_k-33Xn_ZtbcTgN4qdZu9CrLnStsDs1lykGGVs/prefill" target="_blank" rel="noopener">表單連結</a><br><a href="https://docs.google.com/spreadsheets/d/1a0_MfHBPX9yhq6hZojSL0TXUfjjUKNi4KRuNuDst3bI/edit?usp=sharing" target="_blank" rel="noopener">試算表連結</a></p>
+</blockquote>
+<p><img src="https://i.imgur.com/DCSzx6h.png" alt></p>
+<h2 id="分析與統計群眾的喜愛節目"><a href="#分析與統計群眾的喜愛節目" class="headerlink" title="分析與統計群眾的喜愛節目"></a>分析與統計群眾的喜愛節目</h2><blockquote>
+<p>透過將excel檔案匯出成csv將更好進行後續操作。</p>
+</blockquote>
+<h3 id="方法1-編程"><a href="#方法1-編程" class="headerlink" title="方法1: 編程"></a>方法1: 編程</h3><p><strong>流程規劃</strong></p>
+<ol>
+<li>讀取檔案 favoritetv.csv</li>
+<li>抓取各列title資訊</li>
+<li>統計次數</li>
+<li>排列與顯示</li>
+</ol>
+<p>這樣的操作過程是繁瑣對吧？是否能使用不同工具與語言來更好實踐它?對於 SQL 而言，這個答案是肯定的</p>
+<p>favorites_03.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line">counts = &#123;&#125;</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"favoritetv.csv"</span>, <span class="string">"r"</span>) <span class="keyword">as</span> file:</span><br><span class="line">  reader = csv.DictReader(file)</span><br><span class="line">  <span class="keyword">for</span> row <span class="keyword">in</span> reader:</span><br><span class="line">    title = row[<span class="string">"title"</span>]</span><br><span class="line">    <span class="keyword">if</span> title <span class="keyword">in</span> counts:</span><br><span class="line">      counts[title] += <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">      counts[title] = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> title, count <span class="keyword">in</span> sorted(counts.items(),key=<span class="keyword">lambda</span> item: item[<span class="number">1</span>],reverse=<span class="literal">True</span>):</span><br><span class="line">  print(title, count, sep=<span class="string">" | "</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>額外補充</strong><br>pandas 也能進行良好的統計分析，但開檔讀檔仍需耗費相當龐大的開銷因此數據還是存在 SQL 才是上上策</p>
+<p>favorites_4.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">df = pd.read_csv(<span class="string">"favoritetv.csv"</span>)</span><br><span class="line">print(df[<span class="string">'title'</span>].value_counts())</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法2-SQL"><a href="#方法2-SQL" class="headerlink" title="方法2: SQL"></a>方法2: SQL</h3><blockquote>
+<p>影片時間: 20:15</p>
+</blockquote>
+<p><strong>前置作業</strong></p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//創建Table</span><br><span class="line">sqlite3 favorites.db</span><br><span class="line">sqlite &gt; .<span class="built_in">mode</span> csv</span><br><span class="line">sqlite &gt; .import "favoritetv.csv" favorites</span><br></pre></td></tr></table></figure>
+
+<p><strong>資料統計與分析</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//Table的格式</span><br><span class="line">sqlite&gt; .schema</span><br><span class="line"></span><br><span class="line">//新增修改刪除</span><br><span class="line"><span class="keyword">SELECT</span> title <span class="keyword">FROM</span> favorites;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> title, <span class="keyword">COUNT</span>(title) <span class="keyword">FROM</span> favorites</span><br><span class="line">    <span class="keyword">GROUP</span> <span class="keyword">BY</span> title;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> title, <span class="keyword">COUNT</span>(title) <span class="keyword">as</span> n <span class="keyword">FROM</span> favorites</span><br><span class="line">    <span class="keyword">GROUP</span> <span class="keyword">BY</span> title</span><br><span class="line">    <span class="keyword">ORDER</span> <span class="keyword">BY</span> n <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="SQL-介紹"><a href="#SQL-介紹" class="headerlink" title="SQL 介紹"></a>SQL 介紹</h2><h3 id="優點"><a href="#優點" class="headerlink" title="優點"></a>優點</h3><h4 id="簡易"><a href="#簡易" class="headerlink" title="簡易"></a>簡易</h4><p>SQL 可以達成更簡易的搜尋，對於數據的分析將不用進行複雜的python編寫。<br>SQL 處理數據時，我們僅需要四個操作：</p>
+<ul>
+<li>創建: INSERT</li>
+<li>讀取: SELECT</li>
+<li>更新: UPDATE</li>
+<li>刪除: DELETE</li>
+</ul>
+<h4 id="快速"><a href="#快速" class="headerlink" title="快速"></a>快速</h4><p>此外 SQL 是關係數據庫，我們將不必依賴csv文件檔案。每次csv使用時需開啟文件，並進行逐行的迭代，當csv文件包含大量數據時，這將變得很慢，SQL將提供更快的訪問權限。</p>
+<h3 id="功能介紹"><a href="#功能介紹" class="headerlink" title="功能介紹"></a>功能介紹</h3><h4 id="數據類型"><a href="#數據類型" class="headerlink" title="數據類型"></a>數據類型</h4><p>SQL 有不同大小的數據類型，這樣可以對於數據進行更良好的管理以避免惡意的操作來淹沒計算內存，這也許將會要造成服務器崩潰。</p>
+<p>INTEGER</p>
+<ul>
+<li>smallint</li>
+<li>integer</li>
+<li>bigint</li>
+</ul>
+<h4 id="指令功能"><a href="#指令功能" class="headerlink" title="指令功能"></a>指令功能</h4><p>SQL 除了四個操作指令外，還包含許多好用功能能讓數據科學家能快速的分析與統計所需的操作。</p>
+<p>好用的功能</p>
+<ul>
+<li>GROUP BY</li>
+<li>ORDER BY</li>
+<li>COUNT</li>
+<li>DESC</li>
+</ul>
+<h2 id="IMDb"><a href="#IMDb" class="headerlink" title="IMDb"></a>IMDb</h2><p>IMDb 是一個關於電影演員、電影、電視節目、電視藝人、電子遊戲和電影製作小組的線上資料庫。</p>
+<h3 id="統計與分析IMDb"><a href="#統計與分析IMDb" class="headerlink" title="統計與分析IMDb"></a>統計與分析IMDb</h3><p>在開始之前請先下載 <a href="https://datasets.imdbws.com" target="_blank" rel="noopener">title.basics.tsv.gz</a></p>
+<h4 id="統計2019年的喜劇節目數量。"><a href="#統計2019年的喜劇節目數量。" class="headerlink" title="統計2019年的喜劇節目數量。"></a>統計2019年的喜劇節目數量。</h4><p>single_tables.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cs50</span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create database by opening and closing an empty file first</span></span><br><span class="line">open(<span class="string">f"shows3.db"</span>, <span class="string">"w"</span>).close()</span><br><span class="line">db = cs50.SQL(<span class="string">"sqlite:///shows3.db"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create table called `shows`, and specify the columns we want,</span></span><br><span class="line"><span class="comment"># all of which will be text except `startYear`</span></span><br><span class="line">db.execute(<span class="string">"CREATE TABLE shows (tconst TEXT, primaryTitle TEXT, startYear NUMERIC, genres TEXT)"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Open TSV file</span></span><br><span class="line"><span class="comment"># https://datasets.imdbws.com/title.basics.tsv.gz</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"title.basics.tsv"</span>, <span class="string">"r"</span>) <span class="keyword">as</span> titles:</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Create DictReader</span></span><br><span class="line">    reader = csv.DictReader(titles, delimiter=<span class="string">"\t"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Iterate over TSV file</span></span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> reader:</span><br><span class="line"></span><br><span class="line">        <span class="comment"># If non-adult TV show</span></span><br><span class="line">        <span class="keyword">if</span> row[<span class="string">"titleType"</span>] == <span class="string">"tvSeries"</span> <span class="keyword">and</span> row[<span class="string">"isAdult"</span>] == <span class="string">"0"</span>:</span><br><span class="line"></span><br><span class="line">            <span class="comment"># If year not missing</span></span><br><span class="line">            <span class="keyword">if</span> row[<span class="string">"startYear"</span>] != <span class="string">"\\N"</span>:</span><br><span class="line"></span><br><span class="line">                <span class="comment"># If since 1970</span></span><br><span class="line">                startYear = int(row[<span class="string">"startYear"</span>])</span><br><span class="line">                <span class="keyword">if</span> startYear &gt;= <span class="number">1970</span>:</span><br><span class="line"></span><br><span class="line">                    <span class="comment"># Insert show by substituting values into each ? placeholder</span></span><br><span class="line">                    db.execute(<span class="string">"INSERT INTO shows (tconst, primaryTitle, startYear, genres) VALUES(?, ?, ?, ?)"</span>,</span><br><span class="line">                               row[<span class="string">"tconst"</span>], row[<span class="string">"primaryTitle"</span>], startYear, row[<span class="string">"genres"</span>])</span><br></pre></td></tr></table></figure>
+
+<p><strong>Table格式</strong></p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sqlite3 show3.db</span><br><span class="line">sqlite &gt; .schema</span><br><span class="line"></span><br><span class="line">CREATE TABLE shows (id INT, <span class="built_in">title</span> TEXT, year NUMERIC, genre TEXT);</span><br></pre></td></tr></table></figure>
+
+<p><strong>資料統計與分析</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">From</span> shows <span class="keyword">WHERE</span> genere =<span class="string">"Comdy"</span> <span class="keyword">AND</span> <span class="keyword">year</span> = <span class="number">2019</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">From</span> shows <span class="keyword">WHERE</span> genere <span class="keyword">LIKE</span> <span class="string">"%Comdy%"</span> <span class="keyword">AND</span> <span class="keyword">year</span> = <span class="number">2019</span>;</span><br></pre></td></tr></table></figure>
+
+<p>這樣的方式並不可靠，可能存在某種類型也包含Comdy這個單字，如果能僅搜尋genre的特定表單，這將可以解決這一問題。因此以下將多創立一個genre獨立表單來存取資料，並透過id來串連彼此的關係。</p>
+<p><img src="https://i.imgur.com/SeV6Aon.png" alt></p>
+<p>multipl_tables.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cs50</span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create database</span></span><br><span class="line">open(<span class="string">f"shows4.db"</span>, <span class="string">"w"</span>).close()</span><br><span class="line">db = cs50.SQL(<span class="string">"sqlite:///shows4.db"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create tables</span></span><br><span class="line">db.execute(<span class="string">"CREATE TABLE shows (id INT, title TEXT, year NUMERIC, PRIMARY KEY(id))"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># The `genres` table will have a column called `show_id` that references</span></span><br><span class="line"><span class="comment"># the `shows` table above</span></span><br><span class="line">db.execute(<span class="string">"CREATE TABLE genres (show_id INT, genre TEXT, FOREIGN KEY(show_id) REFERENCES shows(id))"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Open TSV file</span></span><br><span class="line"><span class="comment"># https://datasets.imdbws.com/title.basics.tsv.gz</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"title.basics.tsv"</span>, <span class="string">"r"</span>) <span class="keyword">as</span> titles:</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Create DictReader</span></span><br><span class="line">    reader = csv.DictReader(titles, delimiter=<span class="string">"\t"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Iterate over TSV file</span></span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> reader:</span><br><span class="line"></span><br><span class="line">        <span class="comment"># If non-adult TV show</span></span><br><span class="line">        <span class="keyword">if</span> row[<span class="string">"titleType"</span>] == <span class="string">"tvSeries"</span> <span class="keyword">and</span> row[<span class="string">"isAdult"</span>] == <span class="string">"0"</span>:</span><br><span class="line"></span><br><span class="line">            <span class="comment"># If year not missing</span></span><br><span class="line">            <span class="keyword">if</span> row[<span class="string">"startYear"</span>] != <span class="string">"\\N"</span>:</span><br><span class="line"></span><br><span class="line">                <span class="comment"># If since 1970</span></span><br><span class="line">                startYear = int(row[<span class="string">"startYear"</span>])</span><br><span class="line">                <span class="keyword">if</span> startYear &gt;= <span class="number">1970</span>:</span><br><span class="line"></span><br><span class="line">                    <span class="comment"># Trim prefix from tconst</span></span><br><span class="line">                    id = int(row[<span class="string">"tconst"</span>][<span class="number">2</span>:])</span><br><span class="line"></span><br><span class="line">                    <span class="comment"># Insert show</span></span><br><span class="line">                    db.execute(<span class="string">"INSERT INTO shows (id, title, year) VALUES(?, ?, ?)"</span>, id, row[<span class="string">"primaryTitle"</span>], startYear)</span><br><span class="line"></span><br><span class="line">                    <span class="comment"># Insert genres</span></span><br><span class="line">                    <span class="keyword">if</span> row[<span class="string">"genres"</span>] != <span class="string">"\\N"</span>:</span><br><span class="line">                        <span class="keyword">for</span> genre <span class="keyword">in</span> row[<span class="string">"genres"</span>].split(<span class="string">","</span>):</span><br><span class="line">                            db.execute(<span class="string">"INSERT INTO genres (show_id, genre) VALUES(?, ?)"</span>, id, genre)</span><br></pre></td></tr></table></figure>
+
+<p><strong>Table格式</strong></p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sqlite3 show4.db</span><br><span class="line">sqlite &gt; .schema</span><br><span class="line"></span><br><span class="line">CREATE TABLE shows (id INT, <span class="built_in">title</span> TEXT, year NUMERIC, PRIMARY KEY(id));</span><br><span class="line">CREATE TABLE genres (show_id INT, genre TEXT, FOREIGN KEY(show_id) REFERENCES shows(id));</span><br></pre></td></tr></table></figure>
+
+<p><strong>genre擷取</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> genres <span class="keyword">WHERE</span> show_id = <span class="keyword">id</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>資料統計與分析</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">FROM</span> shows</span><br><span class="line">    <span class="keyword">WHERE</span> <span class="keyword">id</span> <span class="keyword">IN</span> (<span class="keyword">SELECT</span> show_id <span class="keyword">FROM</span> genres <span class="keyword">WHERE</span> genre = <span class="string">"Comedy"</span>)</span><br><span class="line">    <span class="keyword">AND</span> <span class="keyword">year</span> = <span class="number">2019</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>特殊類型</strong><br><img src="https://i.imgur.com/SeV6Aon.png" alt></p>
+<p>id = PRIMARY KEY<br>show_id = FOREIGN KEY</p>
+<p>種類</p>
+<ul>
+<li>PRIMARY KEY: 主鍵</li>
+<li>FOREIGN KEY: 外來鍵</li>
+<li>UNIQUE: 唯一值</li>
+<li>INDEX: 索引值</li>
+</ul>
+<p>創建索引值</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">INDEX</span> show_index <span class="keyword">ON</span> genres (show_id);</span><br></pre></td></tr></table></figure>
+
+<p>在沒有索引值時，SQL 會檢查每個元素，透過透過線性搜索。使用索引值後，SQL 透過B-Tree來搜索，可加速執行速度。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://franksm.github.io/2020/03/12/Week7-CS50x-SQL/" data-id="ck90nqsjs00075wnehvd6hf4m" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sqlite3/">sqlite3</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/04/08/PHP-Laravel-Model/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          PHP Laravel Model
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/19/Python-Django-API-rest/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python Django API (rest)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">標籤</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/API/">API</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/D3-js/">D3.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Edge-Computing/">Edge Computing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pandas/">Pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyTorch/">PyTorch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scrapy/">Scrapy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TX2/">TX2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visualizing/">Visualizing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codewars/">codewars</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crawler/">crawler</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlite3/">sqlite3</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">標籤雲</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/D3-js/" style="font-size: 10px;">D3.js</a> <a href="/tags/DB/" style="font-size: 10px;">DB</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/Edge-Computing/" style="font-size: 10px;">Edge Computing</a> <a href="/tags/Laravel/" style="font-size: 10px;">Laravel</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Pandas/" style="font-size: 10px;">Pandas</a> <a href="/tags/PyTorch/" style="font-size: 10px;">PyTorch</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Scrapy/" style="font-size: 10px;">Scrapy</a> <a href="/tags/TX2/" style="font-size: 10px;">TX2</a> <a href="/tags/Visualizing/" style="font-size: 10px;">Visualizing</a> <a href="/tags/codewars/" style="font-size: 10px;">codewars</a> <a href="/tags/crawler/" style="font-size: 10px;">crawler</a> <a href="/tags/sqlite3/" style="font-size: 10px;">sqlite3</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">彙整</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/08/PHP-Laravel-Model/">PHP Laravel Model</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/12/Week7-CS50x-SQL/">Week7 - CS50x (SQL)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/19/Python-Django-API-rest/">Python Django API (rest)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/21/TX2刷機與Pytorch安裝/">TX2刷機與Pytorch安裝</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/14/D3-js基礎-考試成績情境/">D3.js基礎(考試成績情境)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Shih-Meng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
